@@ -1,45 +1,41 @@
-class Department {
-    // private readonly id: string;
-    // private name: string;
-    private employees: string[] = [];
+interface Greetable {
+    name: string;
+    optional?: string;
+    greet(phrase: string): void;
+}
 
-    /**
-     * Constructor of department
-     * @param name
-     */
-    constructor(private readonly id: string, private name: string){
-        // this.id = id;
-        // this.name = name;
+class Person implements Greetable{
+    name: string;
+    age: number;
+    
+    constructor(n: string, a: number){
+        this.name = n;
+        this.age = a;
     }
-
-    describe(this: Department){
-        console.log('Department: id='+ this.id + ' Name ' + this.name)
-    }
-
-    addEmployee(employee: string){
-        // this.id = 2;
-        this.employees.push(employee);
-    }
-
-    printEmployeesInfo() {
-        console.log(this.employees.length);
-        console.log(this.employees);
+    greet(phrase: string): void {
+        console.log(phrase + ' ' + this.name);
     }
 }
 
 
-const accounting: Department =  new Department('1AC','Accounting');
-console.log(accounting)
-accounting.describe();
+let user1: Greetable;
 
-accounting.addEmployee("Seb");
-accounting.addEmployee("Max");
-accounting.addEmployee("Lucie");
+user1 = new Person('seb', 31);
 
-//accounting.employees[3] = "Julien";
+user1.greet("Hello")
 
-accounting.printEmployeesInfo();
 
-// const accountingCopy = { name: "seb", describe: accounting.describe}
+//type AddFn = (a: number, b: number) => number;
 
-// accountingCopy.describe();
+interface AddFn{
+    (a: number, b: number) : number;
+}
+
+let add: AddFn;
+
+add = (a: number, b: number) => {
+    return a + b;
+}
+
+
+

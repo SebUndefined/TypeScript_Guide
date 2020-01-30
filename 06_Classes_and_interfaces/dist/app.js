@@ -1,27 +1,19 @@
 "use strict";
-var Department = (function () {
-    function Department(id, name) {
-        this.id = id;
-        this.name = name;
-        this.employees = [];
+var Person = (function () {
+    function Person(n, a) {
+        this.name = n;
+        this.age = a;
     }
-    Department.prototype.describe = function () {
-        console.log('Department: id=' + this.id + ' Name ' + this.name);
+    Person.prototype.greet = function (phrase) {
+        console.log(phrase + ' ' + this.name);
     };
-    Department.prototype.addEmployee = function (employee) {
-        this.employees.push(employee);
-    };
-    Department.prototype.printEmployeesInfo = function () {
-        console.log(this.employees.length);
-        console.log(this.employees);
-    };
-    return Department;
+    return Person;
 }());
-var accounting = new Department('1AC', 'Accounting');
-console.log(accounting);
-accounting.describe();
-accounting.addEmployee("Seb");
-accounting.addEmployee("Max");
-accounting.addEmployee("Lucie");
-accounting.printEmployeesInfo();
+var user1;
+user1 = new Person('seb', 31);
+user1.greet("Hello");
+var add;
+add = function (a, b) {
+    return a + b;
+};
 //# sourceMappingURL=app.js.map
